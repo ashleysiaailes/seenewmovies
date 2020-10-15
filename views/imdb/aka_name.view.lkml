@@ -19,8 +19,8 @@ view: aka_name {
     sql: ${TABLE}.person_id ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [id, name]
-  }
+  # measure: count {
+  #   type: count
+  #   drill_fields: [id, name]
+  # }
 }
