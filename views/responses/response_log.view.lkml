@@ -5,15 +5,17 @@ view: response_log {
     concat(Watch_Party_Date,"-",Host_Email)as host_key,
     Watch_Party_Date,
     Host_Email,
+    email_address,
     Timestamp
 from seemovies.movie_responses
              ;;
     persist_for: "24 hours"
-    distribution_style: all
+    #distribution_style: all
   }
   dimension: unique_key {
     type: string
     primary_key: yes
+    hidden: yes
     sql: ${TABLE}.unique_key ;;
   }
   dimension: host_key {
@@ -24,16 +26,42 @@ from seemovies.movie_responses
     type: string
     sql: ${TABLE}.host_email ;;
   }
+  dimension: email_address {
+    type: string
+    sql: ${TABLE}.email_address ;;
+  }
 
-  dimension: watch_party_date {
-    type: date
+  dimension_group: watch_party_date {
+    type: time
+    timeframes: [
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.watch_party_date ;;
   }
 
-  dimension: timestamp {
-    type: date
+  dimension_group: timestamp {
+    type: time
+    timeframes: [
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.timestamp ;;
   }
+
+  # measure: response_count {
+  #   type: count
+  # }
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #

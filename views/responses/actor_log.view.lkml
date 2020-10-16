@@ -6,23 +6,29 @@ view: actor_log {
 from seemovies.movie_responses
              ;;
     persist_for: "24 hours"
-    distribution_style: all
+    #distribution_style: all
   }
 
 
   dimension: unique_key {
     type: string
     primary_key: yes
+    hidden: yes
     sql: ${TABLE}.unique_key ;;
   }
 
   dimension: host_key {
+    hidden: yes
     type: string
     sql: ${TABLE}.host_key ;;
   }
   dimension: actor {
     type: string
     sql: ${TABLE}.actor ;;
+  }
+
+  measure: actor_votes {
+    type: count
   }
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;

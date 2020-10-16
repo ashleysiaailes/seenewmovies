@@ -3,6 +3,7 @@ connection: "lookerdata"
 include: "/views/imdb/*.view.lkml"
 include: "/views/mak_movies/*.view.lkml"
 include: "/views/netflix/*.view.lkml"
+include: "/views/responses/*.view.lkml"
 
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
@@ -51,6 +52,19 @@ explore: movies {
     type: inner
   }
 
+}
+
+explore: response_log {
+  join: genre_log {
+    sql_on: ${response_log.host_key}=${genre_log.host_key} ;;
+    relationship: many_to_many
+    type: inner
+  }
+  join: actor_log {
+    sql_on: ${response_log.host_key}=${actor_log.host_key} ;;
+    relationship: many_to_many
+    type: inner
+  }
 }
 
 

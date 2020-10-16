@@ -1,19 +1,30 @@
 view: genre_log {
     derived_table: {
     sql: With response as(
-Select split(What_are_you_in_the_mood_for_,",") as genre, An_Actor_Actress_you_d_like_to_see_on_the_screen as actor, concat(Watch_Party_Date,"-",Host_Email)as host_key from seemovies.movie_responses
+Select unique_key,
+split(What_are_you_in_the_mood_for_,",") as genre,
+An_Actor_Actress_you_d_like_to_see_on_the_screen as actor,
+concat(Watch_Party_Date,"-",Host_Email)as host_key
+from seemovies.movie_responses
 )
 
-Select host_key, genre
+Select unique_key || '-' || genre as pk, host_key, genre
 from response
 cross join UNNEST(response.genre)as genre
        ;;
       persist_for: "24 hours"
-      distribution_style: all
+      #distribution_style: all
     }
 
+dimension: pk {
+  primary_key: yes
+  hidden: yes
+  type: string
+  sql: ${TABLE}.pk ;;
+}
 
   dimension: host_key {
+    hidden: yes
     type: string
     sql: ${TABLE}.host_key ;;
     }
@@ -21,6 +32,10 @@ dimension: genre {
         type: string
         sql: ${TABLE}.genre ;;
       }
+
+  measure: genre_votes {
+    type: count
+  }
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #
