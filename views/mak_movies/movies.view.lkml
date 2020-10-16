@@ -10,12 +10,12 @@ view: movies {
   }
 
   dimension: adult {
-    type: string
+    type: yesno
     sql: ${TABLE}.adult ;;
   }
 
   dimension: belongs_to_collection {
-    type: string
+    type: yesno
     sql: ${TABLE}.belongs_to_collection ;;
   }
 
@@ -25,6 +25,7 @@ view: movies {
   }
 
   dimension: genres {
+    hidden: yes
     type: string
     sql: ${TABLE}.genres ;;
   }
