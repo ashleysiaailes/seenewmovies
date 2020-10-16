@@ -64,12 +64,12 @@ view: movies {
   dimension: poster_image {
     type: string
     sql: ${TABLE}.poster_path;;
-    html: <img src="https://image.tmdb.org/t/p/original/{{value}}" /> ;;
+    html: <img src="https://image.tmdb.org/t/p/w342{{value}}" /> ;;
   }
 
   dimension: poster_path {
     type: string
-    sql: "https://image.tmdb.org/t/p/original/" || ${TABLE}.poster_path ;;
+    sql: "https://image.tmdb.org/t/p/w342" || ${TABLE}.poster_path ;;
   }
 
   dimension: production_companies {
