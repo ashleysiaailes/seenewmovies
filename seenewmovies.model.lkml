@@ -18,7 +18,32 @@ include: "/views/netflix/*.view.lkml"
 #     sql_on: ${users.id} = ${orders.user_id} ;;
 #   }
 # }
+
+explore: movies {
+  join: netflix_original_films {
+    sql_on: ${movies.title}=${netflix_original_films.title} ;;
+    relationship: one_to_one
+    type: left_outer
+  }
+
+  join: oscar_nominations_movies {
+    from: oscar_nominations
+    sql_on: ${movies.title}=${oscar_nominations_movies.entity} ;;
+    relationship: one_to_many
+    type: left_outer
+  }
+
+  join: genres {
+    sql_on: ${movies.id}=${genres.movieid} ;;
+    relationship: one_to_many
+    type: inner
+  }
+
+}
+
+
 explore: netflix_movies {
+  hidden: yes
   from: movie_details
 
   join: netflix_original_films {
