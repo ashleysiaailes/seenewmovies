@@ -64,7 +64,7 @@ view: movies {
   dimension: poster_image {
     type: string
     sql: ${TABLE}.poster_path;;
-    html: <img src="{{value}}" /> ;;
+    html: <img src="https://image.tmdb.org/t/p/original/{{value}}" /> ;;
   }
 
   # dimension: poster_path {
