@@ -20,9 +20,17 @@ include: "/views/netflix/*.view.lkml"
 # }
 explore: netflix_movies {
   from: movie_details
+
   join: netflix_original_films {
     sql_on: ${netflix_movies.name}=${netflix_original_films.title} ;;
     relationship: one_to_one
+    type: left_outer
+  }
+
+  join: oscar_nominations_movies {
+    from: oscar_nominations
+    sql_on: ${netflix_movies.name}=${oscar_nominations_movies.entity} ;;
+    relationship: one_to_many
     type: left_outer
   }
 }

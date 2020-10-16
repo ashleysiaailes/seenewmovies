@@ -3,11 +3,13 @@ view: netflix_original_films {
     ;;
 
   dimension: genre {
+    hidden: yes
     type: string
     sql: ${TABLE}.Genre ;;
   }
 
   dimension_group: release {
+    hidden: yes
     type: time
     timeframes: [
       raw,
@@ -23,12 +25,19 @@ view: netflix_original_films {
   }
 
   dimension: title {
+    hidden: yes
     type: string
     sql: ${TABLE}.Title ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
+  dimension: is_netflix_original {
+    view_label: "Netflix Movies"
+    type: yesno
+    sql: ${TABLE}.Title is not null ;;
   }
+
+  # measure: count {
+  #   type: count
+  #   drill_fields: []
+  # }
 }

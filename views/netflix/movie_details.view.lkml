@@ -1,6 +1,7 @@
 view: movie_details {
   sql_table_name: `lookerdata.makoto_thesis.makoto_movies`
     ;;
+    label: "Netflix Movies"
 
   dimension: budget {
     type: number
@@ -34,6 +35,7 @@ view: movie_details {
   }
 
   dimension: name {
+    label: "Movie Title"
     type: string
     sql: ${TABLE}.name ;;
   }
@@ -78,8 +80,8 @@ view: movie_details {
     sql: ${TABLE}.year ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [name]
-  }
+  # measure: count {
+  #   type: count
+  #   drill_fields: [name]
+  # }
 }
