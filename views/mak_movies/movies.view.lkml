@@ -11,7 +11,7 @@ view: movies {
 
   dimension: adult {
     type: yesno
-    sql: ${TABLE}.adult ;;
+    sql: BOOLEAN(${TABLE}.adult) ;;
   }
 
   dimension: belongs_to_collection {
@@ -46,6 +46,7 @@ view: movies {
   }
 
   dimension: original_title {
+    hidden: yes
     type: string
     sql: ${TABLE}.original_title ;;
   }
@@ -60,10 +61,16 @@ view: movies {
     sql: ${TABLE}.popularity ;;
   }
 
-  dimension: poster_path {
+  dimension: poster_image {
     type: string
-    sql: ${TABLE}.poster_path ;;
+    sql: ${TABLE}.poster_path;;
+    html: <img src="{{value}}" /> ;;
   }
+
+  # dimension: poster_path {
+  #   type: string
+  #   sql: ${TABLE}.poster_path ;;
+  # }
 
   dimension: production_companies {
     type: string
