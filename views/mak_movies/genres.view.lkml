@@ -12,6 +12,7 @@ view: genres {
   dimension: genre {
     type: string
     sql: ${TABLE}.genre ;;
+    case_sensitive: no
   }
 
   dimension: movieid {

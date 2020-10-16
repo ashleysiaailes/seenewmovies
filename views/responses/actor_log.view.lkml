@@ -25,6 +25,10 @@ from seemovies.movie_responses
   dimension: actor {
     type: string
     sql: ${TABLE}.actor ;;
+    link: {
+      label: "Search Results"
+      url: "https://hack.looker.com/dashboards/11?Actor%2FActress={{ value }}"
+    }
   }
 
   measure: actor_votes {
