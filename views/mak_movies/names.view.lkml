@@ -23,6 +23,7 @@ view: names {
   }
 
   dimension: nconst {
+    hidden: yes
     type: string
     sql: ${TABLE}.nconst ;;
   }
@@ -32,8 +33,8 @@ view: names {
     sql: ${TABLE}.primary_profession ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [name]
-  }
+  # measure: count {
+  #   type: count
+  #   drill_fields: [name]
+  # }
 }

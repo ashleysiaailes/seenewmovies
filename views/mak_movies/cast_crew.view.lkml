@@ -8,6 +8,7 @@ view: cast_crew {
   }
 
   dimension: characters {
+    hidden: yes
     type: string
     sql: ${TABLE}.characters ;;
   }
@@ -18,16 +19,19 @@ view: cast_crew {
   }
 
   dimension: nconst {
+    hidden: yes
     type: string
     sql: ${TABLE}.nconst ;;
   }
 
   dimension: ordering {
+    hidden: yes
     type: string
     sql: ${TABLE}.ordering ;;
   }
 
   dimension: tconst {
+    hidden: yes
     type: string
     sql: ${TABLE}.tconst ;;
   }

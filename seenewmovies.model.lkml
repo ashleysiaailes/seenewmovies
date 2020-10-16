@@ -39,6 +39,18 @@ explore: movies {
     type: inner
   }
 
+  join: cast_crew {
+    sql_on: ${movies.imdbid}=${cast_crew.tconst} ;;
+    relationship: one_to_many
+    type: inner
+  }
+
+  join: names {
+    sql_on: ${cast_crew.nconst}=${names.nconst} ;;
+    relationship: many_to_one
+    type: inner
+  }
+
 }
 
 
