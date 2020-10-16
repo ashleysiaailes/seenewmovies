@@ -29,7 +29,7 @@ view: genre_responses_pdt {
         COUNT(DISTINCT genre_log.pk) AS genre_votes
       FROM response_log
       INNER JOIN genre_log ON response_log.host_key=genre_log.host_key
-      group by 1,2,3)
+      group by 1,2,3,4)
 
       SELECT
         host_key,
