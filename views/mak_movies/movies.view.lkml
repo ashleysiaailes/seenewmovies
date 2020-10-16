@@ -40,6 +40,11 @@ view: movies {
     sql: ${TABLE}.imdbid ;;
   }
 
+  dimension: IMDB_Link{
+    type: string
+    sql: "https://www.imdb.com/title/" || ${TABLE}.imdbid ;;
+  }
+
   dimension: original_language {
     type: string
     sql: ${TABLE}.original_language ;;
