@@ -40,7 +40,7 @@ view: movies {
     sql: ${TABLE}.imdbid ;;
     link: {
     label: "IMDB Link"
-    url: "https://www.imdb.com/title/{{value}}"
+    url: "https://www.imdb.com/title/{{ value }}"
     }
   }
 
