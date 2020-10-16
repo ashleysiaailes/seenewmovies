@@ -60,6 +60,11 @@ explore: response_log {
     relationship: many_to_many
     type: inner
   }
+  join: genre_responses_pdt {
+    sql_on: ${response_log.host_key}=${genre_responses_pdt.host_key} ;;
+    relationship: many_to_many
+    type: inner
+  }
   join: actor_log {
     sql_on: ${response_log.host_key}=${actor_log.host_key} ;;
     relationship: many_to_many
