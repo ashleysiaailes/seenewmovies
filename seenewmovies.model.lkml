@@ -18,3 +18,11 @@ include: "/views/netflix/*.view.lkml"
 #     sql_on: ${users.id} = ${orders.user_id} ;;
 #   }
 # }
+explore: netflix_movies {
+  from: movie_details
+  join: netflix_original_films {
+    sql_on: ${netflix_movies.name}=${netflix_original_films.title} ;;
+    relationship: one_to_one
+    type: left_outer
+  }
+}
