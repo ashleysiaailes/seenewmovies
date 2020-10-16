@@ -67,10 +67,10 @@ view: movies {
     html: <img src="https://image.tmdb.org/t/p/original/{{value}}" /> ;;
   }
 
-  # dimension: poster_path {
-  #   type: string
-  #   sql: ${TABLE}.poster_path ;;
-  # }
+  dimension: poster_path {
+    type: string
+    sql: "https://image.tmdb.org/t/p/original/" || ${TABLE}.poster_path ;;
+  }
 
   dimension: production_companies {
     type: string
