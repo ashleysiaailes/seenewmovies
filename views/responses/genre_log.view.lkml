@@ -31,6 +31,10 @@ dimension: pk {
 dimension: genre {
         type: string
         sql: ${TABLE}.genre ;;
+        link: {
+          label: "Search Results"
+          url: "https://hack.looker.com/dashboards/11?Genre={{ value }}"
+        }
       }
 
   measure: genre_votes {
