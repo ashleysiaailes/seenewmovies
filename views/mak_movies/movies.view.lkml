@@ -47,6 +47,10 @@ view: movies {
   dimension: IMDB_Link{
     type: string
     sql: "https://www.imdb.com/title/" || ${TABLE}.imdbid ;;
+    link: {
+      label: "IMDB Link"
+      url: "{{ value }}"
+    }
   }
 
   dimension: original_language {
@@ -132,8 +136,13 @@ view: movies {
   }
 
   dimension: title {
+    label: "Movie Title"
     type: string
     sql: ${TABLE}.title;;
+    link: {
+      label: "IMDB Link"
+      url: "https://www.imdb.com/title/{{movies.imdbid._rendered_value}}"
+    }
   }
 
   dimension: video {
